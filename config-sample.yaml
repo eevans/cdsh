@@ -1,0 +1,55 @@
+
+# Copy to ~/.cdsh, and edit accordingly
+
+restbase:
+  eqiad:
+    a:
+      - restbase1007.eqiad.wmnet
+      - restbase1010.eqiad.wmnet
+      - restbase1011.eqiad.wmnet
+    b:
+      - restbase1003.eqiad.wmnet
+      - restbase1004.eqiad.wmnet
+      - restbase1008.eqiad.wmnet
+    d:
+      - restbase1005.eqiad.wmnet
+      - restbase1006.eqiad.wmnet
+      - restbase1009.eqiad.wmnet
+  codfw:
+    b:
+      - restbase2001.codfw.wmnet
+      - restbase2002.codfw.wmnet
+    c:
+      - restbase2003.codfw.wmnet
+      - restbase2004.codfw.wmnet
+    d:
+      - restbase2005.codfw.wmnet
+      - restbase2006.codfw.wmnet
+
+restbase-test:
+  eqiad:
+    rack1:
+      - praseodymium.eqiad.wmnet
+      - cerium.eqiad.wmnet
+      - xenon.eqiad.wmnet
+  codfw:
+    rack1:
+      - restbase-test2001.codfw.wmnet
+      - restbase-test2002.codfw.wmnet
+      - restbase-test2003.codfw.wmnet
+
+aqs:
+  eqiad:
+    rack1:
+      - aqs1001.eqiad.wmnet
+      - aqs1002.eqiad.wmnet
+      - aqs1003.eqiad.wmnet
+
+maps:
+  codfw:
+    rack1:
+      - maps-test2001.codfw.wmnet
+      - maps-test2002.codfw.wmnet
+      - maps-test2003.codfw.wmnet
+      - maps-test2004.codfw.wmnet
+      
