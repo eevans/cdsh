@@ -92,6 +92,10 @@ if __name__ == "__main__":
         sys.stderr.write("Cannot combine remote-args and -P/--print-hosts\n")
         sys.exit(1)
 
+    if not os.path.exists(args.config):
+        sys.stderr.write("Configuration %s does not exist" % args.config)
+        sys.exit(1)
+
     try:
         with open(args.config) as f:
             config = yaml.load(f.read())
