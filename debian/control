@@ -1,0 +1,17 @@
+Source: cdsh
+Section: misc
+Priority: optional
+Maintainer: Eric Evans <eevans@wikimedia.org>
+Build-Depends: debhelper (>=9), python
+Standards-Version: 3.9.8
+Homepage: https://github.com/eevans/cdsh
+Vcs-Git: https://github.com/eevans/cdsh.git
+Vcs-Browser: https://github.com/eevans/cdsh
+
+Package: cdsh
+Architecture: any
+Depends: python, dsh
+Description: Cassandra-specific wrapper to distributed shell (dsh)
+ This package provides a simple wrapper around dsh for Apache Cassandra.
+ It permits you to define multiple clusters in a hierarchical fashion and
+ execute commands accordingly (by cluster, data-center, rack, etc).
