@@ -1,4 +1,7 @@
 
+VERSION = 1.0.0
+NAME    = cdsh
+
 PREFIX ?= /usr/local
 BINDIR ?= $(PREFIX)/bin
 
@@ -10,3 +13,7 @@ install:
 
 uninstall:
 	rm $(BINDIR)/cdsh
+
+orig.tar.gz:
+	git archive --format=tar.gz --prefix=$(NAME)-$(VERSION)/ \
+	    -o ../$(NAME)_$(VERSION).orig.tar.gz HEAD
