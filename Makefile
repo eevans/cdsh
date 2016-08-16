@@ -2,8 +2,8 @@
 VERSION = 1.0.0
 NAME    = cdsh
 
-PREFIX ?= /usr/local
-BINDIR ?= $(PREFIX)/bin
+PREFIX ?= /usr
+BINDIR ?= $(DESTDIR)/$(PREFIX)/bin
 
 all:
 
