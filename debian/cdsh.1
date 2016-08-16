@@ -1,0 +1,46 @@
+.\" Hey, EMACS: -*- nroff -*-
+.\"
+.\" (C) Copyright 2016 Eric Evans <eevans@wikimedia.org>,
+.\"
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH CDSH 1 "August 16 2016"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+cdsh \- execute remote commands on a Cassandra cluster
+.SH SYNOPSIS
+.B cdsh [OPTIONS] -- [ARGS]
+.SH DESCRIPTION
+When executing remote commands on a Cassandra cluster, it is common to target
+groups of hosts by data-center or rack, a configuration that is not possible
+in \fBdsh\fP without resorting to error-prone duplication.  \fBcdsh\fP wraps
+\fBdsh\fP in order to provide a hierarchal configuration (cluster, data-center,
+rack).
+
+.SH EXAMPLES
+Run \fBuname\fP on all hosts of the restbase cluster in the eqiad data-center:
+.PP
+.nf
+    $ cdsh -c restbase -d eqiad -- uname -r
+.fi
+
+Print out a list of all hosts in the restbase cluster:
+.PP
+.nf
+    $ cdsh -c restbase -P
+.fi
+.SH SEE ALSO
+.BR dsh (1)
+.br

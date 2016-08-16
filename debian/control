@@ -10,7 +10,7 @@ Vcs-Browser: https://github.com/eevans/cdsh
 
 Package: cdsh
 Architecture: all
-Depends: python, dsh
+Depends: python, dsh, ${misc:Depends}
 Description: Cassandra-specific wrapper to distributed shell (dsh)
  This package provides a simple wrapper around dsh for Apache Cassandra.
  It permits you to define multiple clusters in a hierarchical fashion and
