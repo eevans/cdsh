@@ -70,6 +70,8 @@ if __name__ == "__main__":
                         help="yaml configuration file")
     parser.add_argument("-P", "--print-hosts", action="store_true",
                         help="output matching hosts (no command run)")
+    parser.add_argument("-v", "--verbose", action="store_true",
+                        help="give verbose out of execution process")
     parser.add_argument("args", nargs="*", help="arguments to dsh")
 
     if "--" in sys.argv:
@@ -105,8 +107,11 @@ if __name__ == "__main__":
                 sys.exit(0)
 
             nodes = hosts(config, args.cluster, args.data_center, args.rack)
-            command = ["dsh", "-M", "-m", ",".join(nodes), "--"] + extra_args
-            subprocess.call(command)
+            command = ["dsh", "-M", "-m", ",".join(nodes)]
+            if args.verbose:
+                command.append("-v")
+            command.append("--")
+            subprocess.call(command + extra_args)
     except IOError, e:
         sys.stderr.write("%s\n" % e)
         sys.exit(1)
