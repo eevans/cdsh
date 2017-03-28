@@ -29,7 +29,7 @@ Usage
                             cluster name
       -d DATA_CENTER, --data-center DATA_CENTER
                             data-center name
-      -r RACK, --rack RACK  rack name
+      -r RACK, --rack RACK  rack name(s)
       --config CONFIG       yaml configuration file
       -P, --print-hosts     output matching hosts (no command run)
 
