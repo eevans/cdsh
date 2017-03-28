@@ -1,3 +1,9 @@
+cdsh (1.0.1-1) unstable; urgency=medium
+
+  * New release.
+
+ -- Eric Evans <eevans@wikimedia.org>  Tue, 28 Mar 2017 15:18:02 -0500
+
 cdsh (1.0.0-1) unstable; urgency=medium
 
   * Initial release.
