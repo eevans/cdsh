@@ -1,3 +1,3 @@
 
 * <del>Pass multiple rack arguments</del>
-* Argument to exclude/include hosts
+* <del>Argument to exclude/include hosts</del>

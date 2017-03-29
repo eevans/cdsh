@@ -29,13 +29,20 @@
 # policies, either expressed or implied, of the FreeBSD Project.
 
 
+import fnmatch
 import os
 
 
 DEFAULT_CONFIG = os.path.expanduser("~/.cdsh")
 
 
-def hosts(config, cluster=None, datacenter=None, racks=None):
+def exclude(host, excludes):
+    for e in excludes:
+        if fnmatch.fnmatch(host, e):
+            return True
+    return False
+
+def hosts(config, cluster=None, datacenter=None, racks=None, excludes=None):
     for cfg in config:
         if not cluster or (cluster == cfg):
             for dc in config[cfg]:
@@ -43,11 +50,11 @@ def hosts(config, cluster=None, datacenter=None, racks=None):
                     for r in config[cfg][dc]:
                         if not racks or (r in racks):
                             for host in config[cfg][dc][r]:
-                                yield host
+                                if not exclude(host, excludes):
+                                    yield host
 
-
-def print_hosts(config, cluster=None, datacenter=None, racks=None):
-    for host in hosts(config, cluster, datacenter, racks):
+def print_hosts(config, cluster=None, datacenter=None, racks=None, excludes=None):
+    for host in hosts(config, cluster, datacenter, racks, excludes):
         print host
 
 
@@ -73,6 +80,8 @@ if __name__ == "__main__":
                         help="output matching hosts (no command run)")
     parser.add_argument("-v", "--verbose", action="store_true",
                         help="give verbose out of execution process")
+    parser.add_argument("-e", "--exclude", action="append", default=[],
+                        dest="excludes", help="hosts to exclude (glob)")
     parser.add_argument("args", nargs="*", help="arguments to dsh")
 
     if "--" in sys.argv:
@@ -104,10 +113,20 @@ if __name__ == "__main__":
             config = yaml.load(f.read())
 
             if args.print_hosts:
-                print_hosts(config, args.cluster, args.data_center, args.racks)
+                print_hosts(
+                    config,
+                    args.cluster,
+                    args.data_center,
+                    args.racks,
+                    args.excludes)
                 sys.exit(0)
 
-            nodes = hosts(config, args.cluster, args.data_center, args.racks)
+            nodes = hosts(
+                config,
+                args.cluster,
+                args.data_center,
+                args.racks,
+                args.excludes)
             command = ["dsh", "-M", "-m", ",".join(nodes)]
             if args.verbose:
                 command.append("-v")
