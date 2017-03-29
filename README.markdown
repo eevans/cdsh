@@ -32,6 +32,8 @@ Usage
       -r RACK, --rack RACK  rack name(s)
       --config CONFIG       yaml configuration file
       -P, --print-hosts     output matching hosts (no command run)
+      -e EXCLUDES, --exclude EXCLUDES
+                            hosts to exclude (glob)
 
 
 Examples
